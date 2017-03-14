@@ -156,13 +156,30 @@
         <asp:TextBox ID="PlaylistName" runat="server"></asp:TextBox>
         <asp:Button ID="PlayListFetch" runat="server" Text="Fetch" 
             OnClick="PlayListFetch_Click" />
+
+        <%--enter 3 linkbuttons for move up, move down and delete--%>
+        <asp:LinkButton ID="MoveUp" runat="server"
+                CssClass="btn" OnClick="MoveUp_Click" >
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-up"></span>
+        </asp:LinkButton>&nbsp;&nbsp;
+        <asp:LinkButton ID="MoveDown" runat="server"
+                CssClass="btn" OnClick="MoveDown_Click" >
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-down"></span>
+        </asp:LinkButton>&nbsp;&nbsp;
+        <asp:LinkButton ID="DeleteTrack" runat="server"
+                CssClass="btn" OnClick="DeleteTrack_Click" >
+            <span aria-hidden="true" class="glyphicon glyphicon-remove"
+                 style="color:red"></span>
+        </asp:LinkButton>
         <br /><br />
-        <asp:GridView ID="PlayList" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="PlayList" runat="server" AutoGenerateColumns="False"
+             GridLines="Horizontal" BorderStyle="None">
             <Columns>
-                <asp:TemplateField HeaderText="TrackID">
+                <asp:TemplateField >
                     <ItemTemplate>
+                        <asp:CheckBox ID="Selected" runat="server" />
                         <asp:Label runat="server" 
-                            Text='<%# Eval("TrackID") %>'></asp:Label>
+                            Text='<%# Eval("TrackID") %>' Visible="false"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Track">
